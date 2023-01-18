@@ -2,6 +2,10 @@ Protokoll:
 
 Git: https://github.com/oliver13600/MTCGtest
 
+Lessons Lerned:
+
+Wie man einen Http Server von Grund auf ohne Frameworks entwickelt.
+Nächstes mal würde ich zuerst mit der Datenbank anfangen.
 
 Design:
 
@@ -28,12 +32,21 @@ Design:
         ResponseHandler
         Unwrapper
 
+Unique Features:
+    -Winning Streak System(Eine Card kann wenn sie gegen eine andere Card gewinnt "Punkte" sammeln, wenn sie genug Punkte hat dann wird der dmg stärker. Wenn sie aber "verliert" dann verliert sie die Punkte.)
+    -Erweitertes Elo System(mit Rating calculator)
+
+Nicht implementiert:
+
+    -show configured deck different representation
+    -Trade
+
 UnitTests:
 Bei den Unittest habe ich mit darauf fokusiert Komponente so seperat wie möglich zu testen.
 Ich hatte Probleme mit der Verwenung von Mocks. Wegen mangelnder Zeit habe ich das ausgelassen.
 
-Zeitaufwand:
-    ca 60 Stunden
 
+Zeitaufwand:
+Ich habe vergessen genau die Stunden zu messen. ca 60 Stunden
 
 
