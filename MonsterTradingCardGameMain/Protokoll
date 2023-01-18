@@ -1,0 +1,39 @@
+Protokoll:
+
+Git: https://github.com/oliver13600/MTCGtest
+
+
+Design:
+
+    -Database:
+        DbService
+    -Game:
+        Card
+        Deck
+        ElementType(enum)
+        MonsterType(enum)
+        MonsterCard
+        SpellCard
+        Stats
+        TmpCard
+        User
+    -Managers:
+        BattleManager
+        CardManager
+        UserManager
+    -Server:
+        HttpServer
+        RequestContext
+        ResponseContext
+        ResponseHandler
+        Unwrapper
+
+UnitTests:
+Bei den Unittest habe ich mit darauf fokusiert Komponente so seperat wie möglich zu testen.
+Ich hatte Probleme mit der Verwenung von Mocks. Wegen mangelnder Zeit habe ich das ausgelassen.
+
+Zeitaufwand:
+    ca 60 Stunden
+
+
+
