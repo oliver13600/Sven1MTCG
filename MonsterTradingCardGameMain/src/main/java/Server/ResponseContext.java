@@ -5,6 +5,22 @@ package Server;
 public class ResponseContext {
 
 
+    private String http_version;
+    private String status;
+    private String server;
+    private String contentType;
+    private int contentLength;
+    private String payload;
+
+    public ResponseContext(String status) {
+        http_version = "HTTP/1.1";
+        this.status = status;
+        server = "mtcg-server";
+        contentType = "application/json";
+        contentLength = 0;
+        payload = "";
+    }
+
     public String getHttp_version() {
         return http_version;
     }
@@ -12,8 +28,6 @@ public class ResponseContext {
     public void setHttp_version(String http_version) {
         this.http_version = http_version;
     }
-
-    private String http_version;
 
     public String getStatus() {
         return status;
@@ -23,8 +37,6 @@ public class ResponseContext {
         this.status = status;
     }
 
-    private String status;
-
     public String getServer() {
         return server;
     }
@@ -32,8 +44,6 @@ public class ResponseContext {
     public void setServer(String server) {
         this.server = server;
     }
-
-    private String server;
 
     public String getContentType() {
         return contentType;
@@ -43,8 +53,6 @@ public class ResponseContext {
         this.contentType = contentType;
     }
 
-    private String contentType;
-
     public int getContentLength() {
         return contentLength;
     }
@@ -53,24 +61,11 @@ public class ResponseContext {
         this.contentLength = contentLength;
     }
 
-    private int contentLength;
-
     public String getPayload() {
         return payload;
     }
 
-    private String payload;
-
-    public ResponseContext(String status){
-        http_version = "HTTP/1.1";
-        this.status = status;
-        server = "mtcg-server";
-        contentType = "application/json";
-        contentLength = 0;
-        payload = "";
-    }
-
-    public void setPayload(String payload){
+    public void setPayload(String payload) {
         this.payload = payload;
         contentLength = payload.length();
     }

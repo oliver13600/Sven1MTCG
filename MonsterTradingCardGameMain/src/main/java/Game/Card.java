@@ -9,7 +9,7 @@ public abstract class Card {
 
     private int bonusPoints = 0;
 
-    public Card(){
+    public Card() {
 
     }
 
@@ -33,35 +33,35 @@ public abstract class Card {
     //• fire -> normal
     //• normal -> water
 
-    public float calculateDamage(final Card other){
+    public float calculateDamage(final Card other) {
         float result = this.getDamage();
         //The element type does not effect pure monster fights.
-        if(this instanceof MonsterCard && other instanceof MonsterCard){
+        if (this instanceof MonsterCard && other instanceof MonsterCard) {
             return result;
         }
         //Identical Element
-        if(this.element == other.getElement()){
+        if (this.element == other.getElement()) {
             return result;
         }
-        if(this.element == ElementType.WATER && other.getElement() == ElementType.FIRE || this.element == ElementType.FIRE && other.getElement() == ElementType.NORMAL || this.element == ElementType.NORMAL && other.getElement() == ElementType.WATER){
-            return result*2;
+        if (this.element == ElementType.WATER && other.getElement() == ElementType.FIRE || this.element == ElementType.FIRE && other.getElement() == ElementType.NORMAL || this.element == ElementType.NORMAL && other.getElement() == ElementType.WATER) {
+            return result * 2;
         }
-        if(this.element == ElementType.FIRE && other.getElement() == ElementType.WATER || this.element == ElementType.NORMAL && other.getElement() == ElementType.FIRE || this.element == ElementType.WATER && other.getElement() == ElementType.NORMAL){
-            return result/2;
+        if (this.element == ElementType.FIRE && other.getElement() == ElementType.WATER || this.element == ElementType.NORMAL && other.getElement() == ElementType.FIRE || this.element == ElementType.WATER && other.getElement() == ElementType.NORMAL) {
+            return result / 2;
         }
         return result;
     }
 
-    public void levelUp(){
+    public void levelUp() {
         this.bonusPoints++;
-        if(this.bonusPoints > 3) {
+        if (this.bonusPoints > 3) {
             this.damage *= 1.25;
             this.bonusPoints = 0;
         }
     }
 
-    public void LevelDown(){
-        if(this.bonusPoints > 0){
+    public void LevelDown() {
+        if (this.bonusPoints > 0) {
             this.bonusPoints--;
         }
     }

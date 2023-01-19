@@ -1,8 +1,8 @@
 package Game;
 
-public class SpellCard extends Card{
+public class SpellCard extends Card {
 
-    public SpellCard(){
+    public SpellCard() {
 
     }
 
@@ -10,17 +10,15 @@ public class SpellCard extends Card{
         super(id, name, damage, element);
     }
 
-    public boolean defeatsInstantly(final Card other){
+    public boolean defeatsInstantly(final Card other) {
 
 
         // Spell vs Spell
 
         // Spell vs Monster
-        if(other instanceof MonsterCard){
+        if (other instanceof MonsterCard) {
             var otherMonster = (MonsterCard) other;
-            if(this.getElement() == ElementType.WATER && otherMonster.getMonsterType() == MonsterType.KNIGHT){
-                return true;
-            }
+            return this.getElement() == ElementType.WATER && otherMonster.getMonsterType() == MonsterType.KNIGHT;
         }
         return false;
     }

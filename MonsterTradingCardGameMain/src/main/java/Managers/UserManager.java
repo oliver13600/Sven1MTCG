@@ -12,15 +12,14 @@ public class UserManager {
 
     private static UserManager single_instance = null;
 
-    public static UserManager getInstance()
-    {
+    public static UserManager getInstance() {
         if (single_instance == null) {
             single_instance = new UserManager();
         }
         return single_instance;
     }
 
-    public User authorizeUser(String token){
+    public User authorizeUser(String token) {
         try {
             Connection conn = DbService.getInstance().getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT username, name, bio, image, coins, games, wins, elo FROM users WHERE token = ? AND logged = TRUE;");
@@ -32,7 +31,7 @@ public class UserManager {
                 conn.close();
                 return null;
             }
-            User user = new User(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),rs.getInt(7),rs.getInt(8));
+            User user = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getInt(7), rs.getInt(8));
             rs.close();
             conn.close();
             return user;
@@ -42,7 +41,7 @@ public class UserManager {
         return null;
     }
 
-    public boolean isAdmin(String token){
+    public boolean isAdmin(String token) {
         try {
             Connection conn = DbService.getInstance().getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT COUNT(username) FROM users WHERE token = ? AND admin = TRUE AND logged = TRUE;");
@@ -71,10 +70,10 @@ public class UserManager {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             ps.close();
-            if (!rs.next() || rs.getInt(1) > 0){
+            if (!rs.next() || rs.getInt(1) > 0) {
                 return false;
             }
-            if (username.equals("admin")){
+            if (username.equals("admin")) {
                 ps = conn.prepareStatement("INSERT INTO users(username, pwd, token, admin) VALUES(?,?,?,TRUE);");
             } else {
                 ps = conn.prepareStatement("INSERT INTO users(username, pwd, token) VALUES(?,?,?);");
@@ -92,7 +91,7 @@ public class UserManager {
         return false;
     }
 
-    public boolean loginUser(String username, String pwd){
+    public boolean loginUser(String username, String pwd) {
         try {
             Connection conn = DbService.getInstance().getConnection();
             PreparedStatement ps = conn.prepareStatement("UPDATE users SET logged = TRUE WHERE username = ? AND pwd = ?;");
@@ -111,7 +110,7 @@ public class UserManager {
         return false;
     }
 
-    public boolean logoutUser(String username, String pwd){
+    public boolean logoutUser(String username, String pwd) {
         try {
             Connection conn = DbService.getInstance().getConnection();
             PreparedStatement ps = conn.prepareStatement("UPDATE users SET logged = FALSE WHERE username = ? AND pwd = ?;");

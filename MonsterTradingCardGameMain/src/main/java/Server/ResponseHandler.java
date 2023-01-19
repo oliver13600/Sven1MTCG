@@ -1,9 +1,10 @@
 package Server;
 
 import Database.DbService;
-import Game.*;
-import Managers.CardManager;
+import Game.TmpCard;
+import Game.User;
 import Managers.BattleManager;
+import Managers.CardManager;
 import Managers.UserManager;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -12,7 +13,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

@@ -7,7 +7,7 @@ public class TmpCard {
     private float damage;
 
 
-    public TmpCard(){
+    public TmpCard() {
 
     }
 

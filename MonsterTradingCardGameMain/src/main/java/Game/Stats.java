@@ -2,12 +2,11 @@ package Game;
 
 public class Stats {
 
-    static float Probability(float rating1, float rating2){
-        return 1.0f * 1.0f / (1 + 1.0f * (float)(Math.pow(10, 1.0f * (rating1 - rating2) / 400)));
+    static float Probability(float rating1, float rating2) {
+        return 1.0f * 1.0f / (1 + 1.0f * (float) (Math.pow(10, 1.0f * (rating1 - rating2) / 400)));
     }
 
-    public void EloRating(User user1, User user2, boolean user1won)
-    {
+    public void EloRating(User user1, User user2, boolean user1won) {
         // To calculate the Winning
         // Probability of Player B
         float Pb = Probability(user1.getElo(), user2.getElo());

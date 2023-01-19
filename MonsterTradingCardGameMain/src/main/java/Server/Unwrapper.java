@@ -8,7 +8,7 @@ public class Unwrapper {
 
     BufferedReader reader;
 
-    public Unwrapper(BufferedReader reader){
+    public Unwrapper(BufferedReader reader) {
         this.reader = reader;
     }
 
@@ -18,9 +18,9 @@ public class Unwrapper {
             // header
             request = readHttpHeader(reader);
             // body
-            if (request != null){
+            if (request != null) {
                 int contentLength = request.getContentLength();
-                request.setPayload(readHttpBody(reader,contentLength));
+                request.setPayload(readHttpBody(reader, contentLength));
                 return request;
             } else {
                 return null;
@@ -37,11 +37,11 @@ public class Unwrapper {
         String message;
         // HTTP-Verb, resource requested, the http-version
         message = reader.readLine();
-        if (message == null){
+        if (message == null) {
             return null;
         }
         String[] parts = message.split(" ");
-        if (parts.length == 3){
+        if (parts.length == 3) {
             request.setHttp_method(parts[0]);
             request.setRequested(parts[1]);
             request.setHttp_version(parts[2]);
@@ -49,12 +49,12 @@ public class Unwrapper {
             return null;
         }
         // Further header values
-        while ( (message = reader.readLine()) != null ) {
-            if (message.isBlank() )
+        while ((message = reader.readLine()) != null) {
+            if (message.isBlank())
                 break;
-            parts = message.split(" ",2);
+            parts = message.split(" ", 2);
             if (parts.length == 2) {
-                request.addHeaderValues(parts[0].toLowerCase(),parts[1]);
+                request.addHeaderValues(parts[0].toLowerCase(), parts[1]);
             }
         }
         return request;
@@ -65,9 +65,9 @@ public class Unwrapper {
         int count = 0;
         int input;
         while (reader.ready() && (input = reader.read()) != -1) {
-            sb.append((char)input);
-            count ++;
-            if( count >= contentLength )
+            sb.append((char) input);
+            count++;
+            if (count >= contentLength)
                 break;
         }
         return sb.toString();
